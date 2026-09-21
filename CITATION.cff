@@ -1,1 +1,40 @@
+cff-version: 1.2.0
+message: "If you use the materials in this repository, please cite this repository."
+title: "Cancer Survival Prediction: Literature Review"
+type: dataset
 
+authors:
+  - family-names: "Teli"
+    given-names: "Tawseef Ahmed"
+    orcid: "https://orcid.org/0000-0001-8784-0923"
+
+  - family-names: "Ali"
+    given-names: "Aanisa"
+
+  - family-names: "Khanday"
+    given-names: "Hilal Ahmad"
+
+repository-code: "https://github.com/tay805/cancer-survival-prediction-literature-review"
+
+abstract: >
+  This repository contains the research materials associated with a
+  literature review on cancer survival prediction using machine learning
+  and deep learning. The repository includes bibliographic records,
+  screening data, structured data extraction, analysis resources,
+  figures, tables, manuscript materials, and supplementary materials.
+
+keywords:
+  - cancer survival prediction
+  - cancer survival analysis
+  - machine learning
+  - deep learning
+  - artificial intelligence
+  - survival analysis
+  - literature review
+  - systematic review
+
+license: CC-BY-4.0
+
+version: "1.0.0"
+
+date-released: "2026-09-21"
