@@ -2,787 +2,327 @@
 
 ## Cancer Survival Prediction Using Machine Learning and Deep Learning
 
-- **Protocol Version:** 1.0
+| Protocol item | Details |
+|---|---|
+| **Protocol version** | 1.1 |
+| **Protocol date** | 14 October 2026 |
+| **Review type** | Systematic literature review (SLR), including a comparative analysis of baseline survival models |
+| **Publication window** | January 2023–September 2026, inclusive |
+| **Registration** | OSF Registries — identifier to be added after registration |
+| **Status** | Protocol prepared; search and review stages should be documented as they are completed |
 
-- **Protocol Date:** 21 September 2026
+> **Scope alignment note:** This version follows the accompanying `SR search plan.xlsx`, including its five research questions, eligibility criteria, publication window, and six named search sources. Where the workbook leaves a rule open to interpretation—particularly the exclusion of “cancer survival classification or ordinary regression”—the operational interpretation is stated below and should be confirmed before formal screening.
 
-- **Review Type:** Systematic Literature Review (SLR) with a comparative analysis of baseline survival models
+## 1. Background and rationale
 
-- **Registration:** OSF Registries (identifier to be added upon registration)
+Cancer survival prediction is an important area of clinical research. Reliable estimates of survival-related outcomes can support risk stratification, prognosis, treatment planning, and patient management.
 
-## 1. Review Background
+Machine learning (ML) and deep learning (DL) methods have been applied to cancer survival prediction using patient-level clinical, demographic, molecular, genomic, imaging, pathological, and other data. Studies differ in their cancer populations, datasets, model families, outcome definitions, validation designs, and evaluation metrics. These differences make it difficult to compare results across papers or to identify which modelling approaches are most consistently evaluated.
 
-Cancer survival prediction is an important area of clinical research because accurate estimation of survival-related outcomes can support risk stratification, treatment planning, clinical decision-making, and patient management.
+This review will systematically identify and synthesize primary research on cancer survival prediction, describe the ML/DL and computational survival-modelling approaches used, identify limitations and evidence gaps, and compare baseline models when the studies provide sufficiently consistent within-study evaluations.
 
-The increasing availability of clinical, genomic, molecular, imaging, radiomic, pathological, and multi-omics data has created opportunities for machine learning and deep learning approaches to model complex relationships associated with cancer survival.
+## 2. Aim and objectives
 
-Machine learning and deep learning methods have been applied across different cancer types, datasets, data modalities, and survival outcomes. However, the literature varies substantially in terms of modelling approaches, input data, validation strategies, evaluation metrics, and reporting practices.
+The overall aim is to review research published from January 2023 through September 2026 on computational approaches to cancer survival prediction.
 
-Newly proposed methods are commonly benchmarked against established baseline survival models. The relative performance of these baselines is difficult to assess from individual studies, because comparisons are made on different cohorts, under different validation protocols, and against different comparators.
+The objectives are to:
 
-This systematic literature review examines the existing research on machine learning and deep learning approaches for cancer survival prediction, synthesizes the methodological characteristics, evidence, limitations, and research gaps across the field, and analyses how established baseline models perform relative to one another under controlled conditions.
+1. Identify the ML, DL, and computational/statistical survival-analysis models used in eligible studies.
+2. Describe the cancer types, patient populations, datasets, and data sources studied.
+3. Summarize survival outcomes and evaluation metrics reported.
+4. Identify methodological limitations and research gaps.
+5. Compare baseline survival models only where results are reported under consistent within-study validation settings and evaluation metrics.
 
-## 2. Review Objective
+## 3. Research questions
 
-The objective of this systematic literature review is to systematically identify, classify, evaluate, and synthesize research on cancer survival prediction using machine learning and deep learning approaches, with particular emphasis on cancer types, patient populations, datasets, data modalities, prediction outcomes, modelling techniques, validation strategies, evaluation metrics, explainability, limitations, and research gaps.
+| ID | Research question | Planned synthesis |
+|---|---|---|
+| **RQ1** | What machine learning and deep learning techniques have been used for cancer survival prediction? | Classify model families, architectures, hybrid approaches, and modelling pipelines. |
+| **RQ2** | What cancer types, patient populations, and datasets have been investigated for cancer survival prediction? | Summarize cancer sites/subtypes, cohorts, sample sizes, datasets, and data sources. |
+| **RQ3** | What survival outcomes and evaluation metrics have been used to evaluate cancer survival prediction models? | Tabulate endpoints, prediction formulations, metric names/variants, and reported values. |
+| **RQ4** | What limitations and research gaps are evident in existing cancer survival prediction studies? | Synthesize author-reported limitations and review-identified methodological or evidence gaps. |
+| **RQ5** | How do baseline survival models perform relative to one another under consistent validation settings and evaluation metrics? | Compare eligible within-study baseline comparisons; do not compare unadjusted values across unrelated studies. |
 
-In addition, the review conducts a comparative analysis of predefined comparator survival models, using within-study comparisons reported in the included studies, to determine how these models perform relative to one another when the dataset, validation protocol, and evaluation metric are held constant. A separate comparative analysis examines within-study performance comparisons among predefined survival-model comparators.
+## 4. Review scope
 
-## 3. Research Questions
+The review focuses on primary research that predicts cancer survival or prognosis using patient-level cancer data. Eligible studies may concern any cancer type or subtype and may use clinical, demographic, genomic, molecular, imaging, radiomic, pathological, or multimodal features.
 
-### RQ1
+The review will record the outcome definition and modelling formulation used in each study. Survival-related outcomes may include overall survival, disease-free survival, progression-free survival, recurrence-free survival, cancer-specific survival, disease-specific survival, mortality, time to recurrence, time to progression, or another clearly defined cancer-related survival endpoint.
 
-What machine learning and deep learning techniques have been used for cancer survival prediction?
+Studies that focus only on diagnosis, detection, classification, segmentation, staging, or treatment response without evaluating survival outcomes are outside the review scope.
 
-### RQ2
+### 4.1 Modelling approaches
 
-What cancer types, patient populations, and datasets have been investigated for cancer survival prediction?
+The workbook permits ML, DL, and computational/statistical survival-analysis models. The review will therefore record the actual modelling approach reported by each eligible study rather than restricting extraction to a predetermined list of algorithms. Models may include, where encountered:
 
-### RQ3
+- Tree-based and ensemble methods, including Random Forest and boosting methods.
+- Kernel and margin-based methods, including Support Vector Machines.
+- Neural networks and deep-learning architectures.
+- Deep survival models and hybrid ML/DL pipelines.
+- Computational or statistical survival-analysis models used as predictive methods or comparators.
 
-What types of data and features have been used for cancer survival prediction?
+Traditional statistical models will not automatically be treated as ML/DL models. Their role in each paper (primary predictive method, feature-processing component, or comparator) will be recorded separately.
 
-### RQ4
+### 4.2 Interpretation of the survival-classification/ordinary-regression exclusion
 
-What survival outcomes and evaluation metrics, including measures of discrimination and calibration, have been used to assess cancer survival prediction models?
+The workbook lists “cancer survival classification or ordinary regression” as an exclusion criterion. For consistent screening, this protocol interprets that criterion as excluding studies that use only generic classification or ordinary regression without a defined cancer survival/prognostic endpoint or an appropriate survival-analysis formulation. A study that predicts a clearly defined survival endpoint at a fixed time horizon should be assessed against the full eligibility criteria and the protocol interpretation should be applied consistently. This rule should be confirmed by the review team before screening begins and any decision documented as a protocol clarification.
 
-### RQ5
+## 5. Eligibility criteria
 
-What validation strategies, including internal and external validation, have been used to evaluate cancer survival prediction models?
+### 5.1 Inclusion criteria
 
-### RQ6
+A study will be included when it meets **all** applicable criteria below.
 
-What explainability and interpretability methods have been applied to cancer survival prediction models, and how have they been evaluated?
+| ID | Inclusion criterion | Screening guidance |
+|---|---|---|
+| **I1** | Focuses on cancer survival or prognostic prediction. | A survival-related outcome must be evaluated. |
+| **I2** | Uses machine learning, deep learning, or a computational/statistical survival-analysis model. | Record the role and type of each model; do not infer an algorithm that the paper does not report. |
+| **I3** | Uses patient-level cancer data. | Data may come from an institutional cohort, registry, public cancer dataset, or another patient-derived source. |
+| **I4** | Reports survival-related outcomes and/or evaluation metrics. | Extract the outcome definition and the metrics actually reported. |
+| **I5** | Provides sufficient methodological information. | There must be enough information to identify the population/data, modelling approach, and survival outcome or evaluation. |
+| **I6** | Is a peer-reviewed research article. | Primary research only; apply the exclusion rules to reviews and other non-primary publication types. |
+| **I7** | Falls within the predefined publication window. | January 2023 through September 2026, inclusive. |
+| **I8** | Is published in English. | Apply this rule consistently at screening. |
 
-### RQ7
+### 5.2 Exclusion criteria
 
-What methodological limitations and research gaps are evident in existing cancer survival prediction studies?
+Apply the exclusion criteria in the order shown. At full-text screening, record one **primary** exclusion reason using the first applicable criterion.
 
-### RQ8
+| Order | ID | Exclusion criterion | Operational rule |
+|---:|---|---|---|
+| 1 | **E1** | Outside the publication window | Published before January 2023 or after September 2026. |
+| 2 | **E2** | Ineligible publication type | Review, systematic review, survey, editorial, letter, book chapter, or other non-primary research publication. |
+| 3 | **E3** | Not focused on cancer | The study does not concern cancer or a defined cancer population. |
+| 4 | **E4** | No survival outcome evaluated | Focuses only on diagnosis, detection, classification, segmentation, staging, or treatment response without evaluating survival outcomes. |
+| 5 | **E5** | Survival classification or ordinary regression only | Applies the protocol interpretation in Section 4.2: generic classification or ordinary regression without a defined cancer survival/prognostic endpoint or appropriate survival-analysis formulation. |
+| 6 | **E6** | Insufficient methodological information | The population/data, modelling approach, or relevant outcome cannot be established sufficiently for extraction. |
+| 7 | **E7** | Duplicate record | The record duplicates another identified publication; retain the preferred record and link duplicates where useful. |
 
-How do established baseline survival models perform relative to one another when they are compared within the same study, on the same cohort, under the same validation protocol and evaluation metric?
+If a record fails more than one criterion, assign the first applicable reason in this table. Records that cannot be confidently classified from title and abstract should proceed to full-text assessment.
 
-## 4. Review Scope
+## 6. Publication period and language
 
-The review focuses specifically on machine learning and deep learning approaches used for cancer survival prediction.
+The review covers publications dated **1 January 2023 to 30 September 2026, inclusive**, and written in English. The exact date on which each database is searched must be recorded. If the search is run after September 2026, publication eligibility remains bounded by the stated window unless a formal protocol amendment changes it.
 
-The review considers studies involving human cancer populations or datasets derived from human cancer patients.
+## 7. Information sources
 
-The review covers different cancer types and cancer subtypes rather than restricting the analysis to a particular cancer.
+The workbook identifies the following six sources. The searcher should record the platform/interface used, date searched, query as executed, filters, and number of records returned for each source.
 
-The review considers clinical, demographic, genomic, molecular, imaging, radiomic, pathological, multi-omics, and multimodal data.
+| No. | Database or source | Search approach |
+|---:|---|---|
+| 1 | IEEE Xplore | Search the supplied Boolean query using the source's available search fields and syntax. |
+| 2 | Lens.org | Search title and abstract fields with cancer, survival/prognosis, and ML/DL terms; apply the specified review-publication exclusion if supported by the interface. |
+| 3 | ACM Digital Library | Search for survival prediction/prognosis terms combined with cancer and ML/DL terms. |
+| 4 | Springer Nature Link | Search for survival prediction/prognosis terms combined with cancer and ML/DL terms. |
+| 5 | Frontiers | Search for survival prediction/overall survival, cancer, and ML/DL terms. |
+| 6 | PubMed | Search title/abstract terms and relevant MeSH headings as shown below. |
 
-The review considers survival and related time-to-event outcomes, including overall survival, disease-free survival, progression-free survival, recurrence-free survival, cancer-specific survival, disease-specific survival, mortality, and other clearly defined cancer-related time-to-event outcomes.
+No additional database should be represented as searched unless it is actually searched and documented. Any supplementary search (for example, reference-list checking) should be recorded separately, including its method and yield.
 
-The review also examines predefined comparator survival models as they are compared within the included studies (Section 19).
+## 8. Search strategy
 
-## 5. Machine Learning and Deep Learning Scope
+### 8.1 Search concepts
 
-The review includes studies that use machine learning or deep learning as a component of cancer survival prediction.
+The general search structure combines four concepts:
 
-Machine learning approaches may include, but are not limited to:
+| Concept | Purpose | Example terms from the search plan |
+|---|---|---|
+| Cancer | Identify the disease population | `cancer`, `neoplasm`, `carcinoma`, `tumor`, `tumour` |
+| Survival/prognosis | Identify the target outcome | `survival prediction`, `overall survival`, `survival prognosis`, `cancer prognosis` |
+| Prediction/modelling | Capture predictive work | `prediction`, `prognostic prediction`, `predicting survival`, `modelling` where supported |
+| ML/DL/AI | Identify computational methods | `machine learning`, `deep learning`, `neural network`, `random forest`, `support vector machine`, `gradient boosting`, `XGBoost`, `transformer` |
 
-- Random Forest
+The exact Boolean structure varies by source because search fields and query syntax differ. The database-specific strings below are taken from the workbook and should be retained in the search log exactly as executed. Any syntax changes required by a platform must be documented.
 
-- Random Survival Forest
+### 8.2 Database-specific search strings
 
-- Support Vector Machine
+| Source | Search string |
+|---|---|
+| **IEEE Xplore** | `("cancer survival" OR "survival prediction" OR "survival prognosis" OR "cancer prognosis") AND ("machine learning" OR "deep learning" OR "neural network" OR "random forest" OR "support vector machine" OR "deep neural network")` |
+| **Lens.org** | `(title:("survival prediction" OR "prognostic prediction" OR "predicting survival" OR "survival prognosis") OR abstract:("survival prediction" OR "prognostic prediction" OR "predicting survival" OR "survival prognosis")) AND (title:(cancer OR neoplasm OR carcinoma OR tumor OR tumour) OR abstract:(cancer OR neoplasm OR carcinoma OR tumor OR tumour)) AND (title:("machine learning" OR "deep learning" OR "neural network" OR "random forest" OR "support vector machine" OR "gradient boosting" OR XGBoost OR transformer) OR abstract:("machine learning" OR "deep learning" OR "neural network" OR "random forest" OR "support vector machine" OR "gradient boosting" OR XGBoost OR transformer)) NOT publication_supplementary_type:review` |
+| **ACM Digital Library** | `("survival prediction" OR "overall survival" OR "survival prognosis") AND (cancer OR carcinoma OR tumor OR tumour OR neoplasm) AND ("machine learning" OR "deep learning" OR "neural network")` |
+| **Springer Nature Link** | `("survival prediction" OR "cancer survival" OR "overall survival" OR "survival prognosis") AND (cancer OR carcinoma OR tumor OR tumour) AND ("machine learning" OR "deep learning" OR "neural network")` |
+| **Frontiers** | `("survival prediction" OR "overall survival") AND cancer AND ("machine learning" OR "deep learning")` |
+| **PubMed** | `("survival prediction"[Title/Abstract] OR "overall survival"[Title/Abstract] OR "survival prognosis"[Title/Abstract]) AND (Neoplasms[Mesh] OR cancer*[Title/Abstract] OR carcinoma*[Title/Abstract] OR tumor*[Title/Abstract] OR tumour*[Title/Abstract]) AND (Machine Learning[Mesh] OR "Artificial Intelligence"[Mesh] OR "machine learning"[Title/Abstract] OR "deep learning"[Title/Abstract] OR "neural network*"[Title/Abstract])` |
 
-- Gradient Boosting
+> **Search implementation:** Some interfaces may not accept the workbook's syntax exactly as written. If a query is adapted, preserve both the original workbook string and the final executed string in the search log. Do not report a filter or exclusion as applied unless the platform actually applied it.
 
-- XGBoost
+### 8.3 Pilot search
 
-- LightGBM
+Before formal searching, test the database-specific strings to confirm that they execute correctly and retrieve records relevant to the review. Record the number of records returned and any syntax adjustments. If the search terms or eligibility criteria are substantively changed after the pilot, document the reason and the change in the protocol amendment log before full screening.
 
-- Decision Tree
+### 8.4 Search documentation
 
-- k-Nearest Neighbours
+For every source, retain the following information in the `search/` directory or equivalent project location:
 
-- Other supervised machine learning approaches
+- Source/database and platform.
+- Date searched.
+- Full query exactly as executed.
+- Filters and limits applied.
+- Number of records retrieved.
+- Export format and export filename.
+- Any syntax adaptation, access limitation, or search error.
 
-Deep learning approaches may include, but are not limited to:
+## 9. Study identification and record management
 
-- Artificial Neural Networks
+Export records from each source in a format that preserves available bibliographic metadata, including title, authors, year, abstract, DOI, source, and URL where available. Keep the original exports unchanged in a raw-data location and work from copies for cleaning and screening.
 
-- Deep Neural Networks
+Assign each record a unique identifier. Maintain a record of the source or sources in which each record was found so that the study-selection flow can be reported transparently.
 
-- Convolutional Neural Networks
+## 10. Duplicate management
 
-- Recurrent Neural Networks
+Identify duplicates using DOI, title, author names, publication year, and other available metadata. Manually inspect uncertain matches. Retain one preferred record for screening while preserving the link to duplicate records and their sources.
 
-- Long Short-Term Memory networks
+If a conference paper and an expanded journal article describe the same study, assess whether they are duplicate or companion reports. Retain the report that provides the most complete eligible information and record the relationship. Do not remove distinct studies merely because they use the same dataset.
 
-- Gated Recurrent Units
+## 11. Screening procedure
 
-- Autoencoders
+### 11.1 Screening stages
 
-- Transformers
+Screen records in two stages:
 
-- DeepSurv
+1. **Title and abstract screening:** assess relevance against the review questions and eligibility criteria.
+2. **Full-text screening:** assess potentially eligible papers against all inclusion and exclusion criteria.
 
-- DeepHit
+Records that cannot confidently be excluded from the title and abstract should proceed to full-text screening.
 
-- Other neural survival models
+### 11.2 Reviewer decisions and disagreements
 
-Hybrid and multimodal approaches involving machine learning or deep learning are also considered.
+Where two reviewers are available, both should independently screen records at each stage. Resolve disagreements through discussion; refer unresolved disagreements to a third reviewer where available. If only one reviewer is available, state this in the final review and acknowledge it as a limitation rather than reporting independent screening.
 
-Traditional statistical survival models without a machine learning or deep learning component are outside the primary scope of the review.
+Before full screening, pilot the criteria on a small sample of records and clarify ambiguous rules. Record the calibration sample, reviewer decisions, and any resulting clarifications. Do not claim inter-rater agreement statistics unless they are actually calculated.
 
-Traditional statistical methods may be reported as comparator or baseline methods within an eligible machine learning or deep learning study.
+### 11.3 Full-text exclusion reasons
 
-### 5.1 Operational Definition of Machine Learning and Deep Learning
+Use the ordered exclusion reasons in Section 5.2. Record one primary reason for each full-text exclusion and retain a list of excluded full-text reports with reasons for PRISMA reporting.
 
-A study falls within the machine learning and deep learning scope when at least one model whose survival predictions are evaluated in the study meets one of the following conditions:
+## 12. Data extraction
 
-The model is a tree-based or ensemble method, a kernel method, an instance-based method, a Bayesian or probabilistic graphical model, or a neural network of any architecture.
+### 12.1 Extraction process
 
-The model uses features learned by a deep learning model, including pretrained or foundation-model embeddings, even when the final survival component is a Cox model.
+Use a structured extraction form and pilot it on a small number of eligible studies before extracting all records. Revise the form only when necessary and document substantive changes. Verify extracted numerical results against the publication. If a value is available only in a figure, mark it as figure-derived and record the extraction method.
 
-The following are classified as statistical models and do not by themselves bring a study into scope: Cox proportional hazards models (including stratified, time-varying, and spline-based variants), penalised Cox regression (LASSO, ridge, elastic net), parametric and accelerated failure time models, logistic regression, and nomograms derived from these models.
+### 12.2 Extraction variables
 
-Machine learning used only for feature selection or preprocessing does not bring a study into scope when the evaluated predictive model is a statistical model.
+Extract the following fields where reported and applicable.
 
-Statistical models remain eligible as comparators within an in-scope study and as predefined comparators in the comparative analysis (Section 19.2).
+| Category | Variables |
+|---|---|
+| Bibliographic details | Study ID, title, authors, year, publication type, DOI/URL, country or study setting |
+| Population and cancer | Cancer type/subtype, inclusion population, cohort characteristics, sample size, number of events where reported |
+| Data and features | Dataset/source, clinical and demographic variables, genomic/molecular data, imaging/radiomics, pathology, multi-omics, multimodal inputs |
+| Outcome | Survival/prognostic endpoint, endpoint definition, time horizon, time-to-event or fixed-horizon formulation, censoring information |
+| Models | ML/DL/statistical survival models, architecture, comparator models, hybrid approach, baseline/proposed-model distinction |
+| Methodology | Preprocessing, missing-data handling, feature selection, class balancing if relevant, train/validation/test split, cross-validation, hyperparameter tuning |
+| Validation | Internal validation, external validation, temporal/geographical validation, independent test cohort, validation dataset and protocol |
+| Metrics and results | Metric names and variants, reported values, uncertainty intervals where available, calibration and discrimination measures, comparator results |
+| Baseline comparison | Cohort and feature set, split/protocol, tuning procedure, source of baseline values, exact values and location in paper |
+| Interpretability | Explainability/interpretability method and any evaluation of explanations |
+| Transparency | Code availability, data availability, reproducibility information |
+| Critical appraisal | Author-reported limitations, review-identified concerns, research gaps |
 
-## 6. Population and Data
+### 12.3 Rules for extracting metrics
 
-The review considers studies involving human cancer populations or datasets derived from human cancer patients.
+Record a metric as reported only when the study provides a numeric result for at least one evaluated model. A metric that is merely named or discussed without a numeric result should not be coded as a reported result. Preserve metric variants and evaluation settings; do not treat different variants as interchangeable.
 
-Eligible data sources may include:
+## 13. Quality and methodological appraisal
 
-- Clinical databases
+Assess the methodological quality and risk of bias using a suitable prediction-model appraisal framework. The original protocol specified PROBAST+AI; use it only after confirming that the version and guidance are appropriate for the included study designs and available information. Apply the selected tool consistently and document adaptations or items that cannot be assessed.
 
-- Electronic health records
+Where feasible, one reviewer may assess all studies and a second reviewer independently assess a sample, with all comparative-analysis studies double-assessed. Report the actual procedure used. Use TRIPOD+AI as a reporting reference when examining reporting of model development, validation, discrimination, and calibration; reporting completeness should be distinguished from risk of bias.
 
-- Cancer registries
+## 14. Evidence synthesis
 
-- Public cancer datasets
+Synthesize findings descriptively and thematically, organized around the five research questions. Planned summaries include:
 
-- Genomic databases
+- Publication year and study characteristics.
+- Cancer types, populations, datasets, and sample sizes.
+- Modelling techniques and architectures.
+- Survival endpoints and prediction formulations.
+- Evaluation metrics and reported performance.
+- Validation strategies, including external validation.
+- Baseline models and within-study comparisons.
+- Limitations, reproducibility concerns, and research gaps.
 
-- Molecular datasets
+Use tables and figures where they make the evidence easier to compare. Report each percentage with its numerator and denominator. Separate time-to-event analyses that account for censoring from fixed-horizon prediction approaches when their formulations or metrics are not comparable.
 
-- Medical imaging datasets
+Do not pool performance values across unrelated studies simply because they use the same metric name. Differences in cohorts, outcome definitions, censoring, validation design, and metric variants may make such pooling misleading. Any quantitative synthesis must be justified by the extracted data and described transparently; otherwise, use structured narrative synthesis.
 
-- Radiomics datasets
+## 15. Comparative analysis of baseline models
 
-- Digital pathology datasets
+### 15.1 Rationale
 
-- Multi-omics datasets
+Reported performance from different studies is not directly comparable when populations, datasets, endpoints, validation designs, or metric variants differ. The baseline comparison will therefore prioritize **within-study comparisons** conducted under consistent conditions.
 
-- Institutional patient cohorts
+### 15.2 Eligibility for a baseline comparison
 
-- Multi-centre patient cohorts
+A comparison may be included when:
 
-Synthetic datasets that do not represent an appropriate human cancer population are outside the primary scope of the review.
+1. At least two baseline survival models are evaluated in the same study.
+2. The models are evaluated on the same cohort and, where applicable, the same feature set.
+3. The data split or validation protocol is the same for the models being compared.
+4. A numeric result is reported for each model using the same metric and metric variant.
+5. The compared outcome and evaluation setting are sufficiently described to interpret the comparison.
 
-## 7. Survival Outcomes
+Record comparisons that do not meet these conditions in the descriptive synthesis, but do not treat them as like-for-like evidence in the primary baseline comparison.
 
-Eligible studies address at least one cancer-related survival or time-to-event outcome.
+### 15.3 Comparison extraction and synthesis
 
-These include:
+For every eligible comparison, extract model names, cohort, feature set, validation protocol, metric and variant, numeric values, tuning information, and whether the values were generated by the study authors or taken from previous work.
 
-- Overall survival (OS)
+Summarize which baseline performs better within each eligible comparison and report the difference in the metric when it can be calculated from the reported values. Treat comparisons from the same study as potentially dependent. Avoid claiming that one model is universally superior based on a small or heterogeneous set of comparisons. If evidence is too sparse or inconsistent, provide a descriptive table rather than a pooled estimate.
 
-- Disease-free survival (DFS)
+## 16. Analysis and visualization
 
-- Progression-free survival (PFS)
-
-- Recurrence-free survival (RFS)
-
-- Cancer-specific survival (CSS)
-
-- Disease-specific survival (DSS)
-
-- Mortality
-
-- Time to recurrence
-
-- Time to progression
-
-- Other clearly defined cancer-related time-to-event outcomes
-
-Studies focused exclusively on cancer diagnosis, detection, classification, segmentation, staging, or treatment response without a relevant survival outcome are outside the primary scope.
-
-Studies that model survival as a binary or categorical outcome at a fixed time horizon are eligible. They are identified during data extraction and analysed separately from studies that model time-to-event outcomes with censoring.
-
-## 8. Eligibility Criteria
-
-A study is eligible for inclusion when it satisfies the following criteria:
-
-The study concerns cancer, malignant neoplasms, or a defined cancer type or subtype.
-
-The study involves a human cancer population or a dataset derived from human cancer patients.
-
-The study addresses cancer survival or a clearly defined cancer-related time-to-event outcome.
-
-The study develops, evaluates, compares, or applies a machine learning or deep learning approach that meets the operational definition in Section 5.1.
-
-The study provides sufficient methodological information to identify the data, modelling approach, and relevant outcomes.
-
-The study is published as a peer-reviewed journal article or peer-reviewed full conference paper. Preprints are not eligible.
-
-The study is written in English.
-
-The study is published between 1 January 2015 and the final database search date in 2026.
-
-## 9. Exclusion Criteria
-
-A study is excluded when one or more of the following conditions apply:
-
-The study does not concern cancer.
-
-The study does not involve a human cancer population or a dataset derived from human cancer patients.
-
-The study does not address cancer survival or a relevant time-to-event outcome.
-
-The study focuses exclusively on cancer diagnosis, detection, classification, segmentation, staging, or treatment response without a relevant survival outcome.
-
-No model whose survival predictions are evaluated in the study meets the operational definition of machine learning or deep learning in Section 5.1. This includes studies that rely exclusively on conventional statistical survival modelling.
-
-The publication is a review article, systematic review, meta-analysis, editorial, commentary, letter, opinion article, or other secondary or non-primary publication.
-
-The publication is a conference abstract without sufficient methodological information.
-
-The publication is a book chapter, thesis, dissertation, or other non-eligible publication type.
-
-The publication is a preprint that has not undergone peer review.
-
-The publication is not written in English.
-
-The publication falls outside the defined publication period.
-
-The record is a duplicate of another identified publication.
-
-The publication does not contain sufficient information for the planned data extraction.
-
-## 10. Publication Period
-
-The review considers publications dated from 1 January 2015 through the final database search date in 2026.
-
-The start date captures the emergence of deep learning approaches to survival analysis and the rapid growth of machine learning applications in cancer survival prediction. Studies published before this date are outside the scope of the review.
-
-The exact final search date is recorded when the database searches are conducted.
-
-## 11. Information Sources
-
-The literature search uses the following scholarly databases:
-
-Scopus
-
-Web of Science
-
-PubMed/MEDLINE
-
-IEEE Xplore
-
-ScienceDirect
-
-Peer-reviewed conference proceedings are identified through Scopus, Web of Science, and IEEE Xplore. Proceedings that are not indexed in these sources are not searched.
-
-No other information sources are searched, apart from the supplementary search methods specified in Section 12.3.
-
-## 12. Search Strategy
-
-### 12.1 Search Concepts
-
-The search strategy is developed around three concepts, combined with the Boolean operator AND:
-
-Cancer
-
-Survival prediction or survival analysis
-
-Machine learning and deep learning
-
-### 12.2 Draft Search String
-
-The draft search string for Scopus is given below. It is tested in the pilot search (Section 12.4) and finalised before the formal searches are conducted.
+Maintain analysis scripts, extracted data, and generated figures/tables in traceable project directories, for example:
 
 ```text
-TITLE-ABS-KEY ( cancer* OR tumor* OR tumour* OR neoplas* OR carcinoma*
-
+search/
+  database_search_log.csv
+  search_strings.md
+data/
+  raw/
+  screening/
+  extraction/
+analysis/
+figures/
+tables/
 ```
 
-    OR malignan* OR oncolog* )
+The directory structure is a suggested organization, not evidence that these files already exist. Tables and figures should be traceable to the underlying extraction data. Any scripts used for counts, descriptive statistics, or plots should be retained with sufficient notes to reproduce the outputs.
 
-AND TITLE-ABS-KEY ( "survival prediction" OR "survival analysis"
+## 17. Reporting standards
 
-    OR "survival model*" OR "prognostic model*" OR "prognosis prediction"
+Report the review using PRISMA 2020 and the PRISMA 2020 for Abstracts checklist as appropriate. Document database searching in a transparent, reproducible manner consistent with PRISMA-S principles. Use a PRISMA flow diagram to show records identified, duplicates removed, records screened, full texts assessed, and studies included. Report database records and any supplementary-search records separately when applicable.
 
-    OR "time-to-event" OR "overall survival" OR "disease-free survival"
+Report the actual methods used, including deviations from this protocol, rather than describing planned procedures as completed procedures.
 
-    OR "progression-free survival" OR "recurrence-free survival"
+## 18. Data availability and research materials
 
-    OR "cancer-specific survival" OR "disease-specific survival"
+Where permitted by copyright, licensing, and ethical requirements, retain the search log, bibliographic metadata, screening decisions, extraction tables, analysis scripts, figures, and tables in the project repository. Do not redistribute copyrighted full-text articles or patient-level personal or sensitive data. Clearly document any material that cannot be shared and the reason for the restriction.
 
-    OR mortality OR death )
+## 19. Version control and protocol amendments
 
-AND TITLE-ABS-KEY ( "machine learning" OR "deep learning"
+Use version control to track changes to the protocol, search strings, screening decisions, extraction form, analysis, and manuscript. Any substantive change after registration or the start of formal searching should be documented with:
 
-    OR "neural network*" OR "random survival forest*" OR "random forest*"
+- Date of amendment.
+- Section or procedure changed.
+- Previous and revised approach.
+- Reason for the change.
+- Whether the change was made before or after screening/results were known.
 
-    OR "gradient boost*" OR xgboost OR lightgbm OR "support vector"
+Do not silently change eligibility criteria or search limits after observing the results.
 
-    OR transformer* OR convolutional OR autoencoder* OR deepsurv
+## 20. Protocol registration
 
-    OR deephit )
+Register the protocol on OSF Registries if that remains the selected registration route. Add the registration identifier and link to this document once registration is complete. Do not describe the protocol as registered before the registration has been completed.
 
-AND PUBYEAR > 2014
+## 21. Review status
 
-AND LANGUAGE ( english )
+At the time this protocol is prepared, the accompanying workbook specifies the search sources, draft queries, five research questions, and eligibility criteria. The pilot search, final executed searches, screening, extraction, appraisal, and synthesis should be marked complete only after each activity has actually been performed. Update this section as the review progresses.
 
-AND DOCTYPE ( ar OR cp )
+## 22. Authors
 
-The string is translated into the syntax of each other database. Each translation preserves the three concepts and the limits on publication year, language, and document type.
-
-### 12.3 Supplementary Search Methods
-
-The following supplementary methods are used:
-
-Backward citation searching of the reference lists of all studies included in the systematic review.
-
-Forward citation searching of all studies included in the systematic review, using the citation index of Scopus.
-
-Screening of the reference lists of review articles identified during screening. Review articles are not themselves included.
-
-Records identified through supplementary methods are screened against the same eligibility criteria and reported as a separate stream in the PRISMA flow diagram.
-
-### 12.4 Pilot Search
-
-A pilot search is run in Scopus before the formal searches are conducted. The number of records retrieved is recorded.
-
-The pilot search evaluates whether the draft search strategy retrieves known relevant studies identified during the preliminary, non-systematic reading of the literature and whether the search concepts retrieve relevant terminology used in the field.
-
-Any change to the search strategy or review scope resulting from the pilot search is documented as a protocol amendment before the formal searches begin.
-
-### 12.5 Search Documentation
-
-For each information source, the following are recorded in the search/ directory:
-
-Database name and search platform
-
-Date on which the search was run
-
-Complete search string exactly as executed
-
-Limits and filters applied
-
-Number of records retrieved
-
-## 13. Study Identification
-
-Records retrieved from the selected information sources are collected and retained as the initial literature set.
-
-The original database exports are preserved in the data/raw/ directory where technically and legally appropriate.
-
-Each study is assigned a unique study identifier for use throughout the screening, extraction, and analysis processes.
-
-## 14. Duplicate Management
-
-Duplicate records identified across databases are documented and removed from the screening set.
-
-Duplicate identification uses bibliographic information such as DOI, database identifiers, title, authors, publication year, and other available metadata.
-
-When a conference paper and an extended journal version of the same study are both identified, the more complete version is retained and the records are linked.
-
-When a preprint and its peer-reviewed version are both identified, the peer-reviewed version is retained and the preprint is treated as a duplicate.
-
-The relationship between duplicate records and the retained study record is preserved where appropriate.
-
-## 15. Screening Process
-
-### 15.1 Screening Tool
-
-Screening is conducted using [screening tool to be confirmed]. Screening records are maintained in the data/screening/ directory.
-
-### 15.2 Calibration
-
-Before screening begins, all screening reviewers independently screen a calibration set of 50 randomly selected records against the eligibility criteria. Agreement is measured with Cohen's kappa.
-
-When kappa is below 0.61, the eligibility criteria and their interpretation are clarified, and the calibration exercise is repeated with a new set of records before screening continues.
-
-### 15.3 Title and Abstract Screening
-
-Two reviewers independently screen the title and abstract of every record against the eligibility criteria.
-
-Records included by at least one reviewer proceed to full-text screening. Records that cannot be confidently excluded based on title and abstract are retained for full-text assessment.
-
-### 15.4 Full-Text Screening
-
-Two reviewers independently assess the full text of every potentially eligible study against the eligibility criteria.
-
-Disagreements are resolved by discussion. Disagreements that remain unresolved are decided by a third reviewer.
-
-Each excluded study is assigned the first applicable reason from the following hierarchy:
-
-- Not cancer
-
-- Not a human cancer population
-
-- No relevant survival outcome
-
-- Statistical model only (Section 5.1)
-
-Ineligible publication type, including preprints
-
-- Insufficient information
-
-- Outside the publication period
-
-- Not in English
-
-### 15.5 Decision Rule for the Machine Learning Criterion
-
-Screeners apply the following sequence:
-
-Identify the model or models whose survival predictions the study evaluates.
-
-If any is a tree-based, ensemble, kernel, instance-based, Bayesian, or neural model, the study meets the machine learning criterion.
-
-Otherwise, if any uses features learned by a deep learning model, the study meets the criterion.
-
-Otherwise, the study is excluded with the reason "statistical model only".
-
-Records that cannot be classified from the title and abstract are retained for full-text screening.
-
-### 15.6 Reporting of Agreement
-
-Cohen's kappa and percentage agreement are reported for the calibration exercise, title and abstract screening, and full-text screening.
-
-## 16. Data Extraction
-
-### 16.1 Extraction Procedure
-
-Structured data are extracted from studies that satisfy the final eligibility criteria, using an extraction form that is piloted on five included studies before full extraction begins.
-
-One reviewer extracts data from all included studies. A second reviewer independently extracts data from a random 20% sample of included studies. Agreement is reported, and discrepancies are resolved by discussion.
-
-All numeric performance values are verified against the source publication. Values that appear only in figures are flagged.
-
-The structured extraction data are maintained in the data/extraction/ directory.
-
-### 16.2 Extraction Variables
-
-The extraction process records bibliographic, methodological, computational, dataset, outcome, validation, and performance characteristics.
-
-The extraction variables include, where applicable:
-
-Study identification
-
-Authors
-
-Publication year
-
-Publication type
-
-Country
-
-Cancer type
-
-Cancer subtype
-
-Study population
-
-Dataset
-
-Data source
-
-Sample size
-
-Data modality
-
-Clinical features
-
-Genomic features
-
-Molecular features
-
-Imaging features
-
-Radiomic features
-
-Pathological features
-
-Multi-omics features
-
-Prediction target
-
-Survival endpoint
-
-Survival modelling formulation (time-to-event with censoring, or fixed-horizon classification)
-
-Handling of censoring
-
-Machine learning method
-
-Deep learning architecture
-
-Hybrid modelling approach
-
-Preprocessing
-
-Feature selection
-
-Model development
-
-Validation strategy
-
-- External validation
-
-- Evaluation metrics
-
-Discrimination metric variant (Harrell, Uno, time-dependent)
-
-Calibration measures
-
-Reported performance
-
-Baseline and comparator models
-
-Performance of each model in each comparison instance
-
-Cohort and feature set per comparison instance
-
-Validation protocol per comparison instance
-
-Tuning procedure for baseline models
-
-Source of baseline results (produced by the authors or copied from previous work)
-
-Location of reported values (table, text, or figure)
-
-Explainability method
-
-Evaluation of explainability
-
-Code and data availability
-
-Reported limitations
-
-- Research gaps
-
-### 16.3 Counting Rule for Evaluation Metrics
-
-A metric is recorded as reported when the study gives a numeric value of that metric for at least one of its own models. A metric that is named, defined, or discussed without a numeric value for the study's own models is not recorded as reported.
-
-## 17. Quality Assessment
-
-Risk of bias and applicability are assessed using PROBAST+AI.
-
-One reviewer assesses all included studies. A second reviewer independently assesses a random 20% sample of included studies and all studies included in the comparative analysis (Section 19). Disagreements are resolved by discussion, and unresolved disagreements are decided by a third reviewer.
-
-TRIPOD+AI is used as the reference standard when extracting the reporting of discrimination, calibration, and validation.
-
-The assessment criteria and results are documented in the repository.
-
-## 18. Evidence Synthesis
-
-The included studies are synthesized using descriptive analysis and the comparative analysis specified in Section 19.
-
-The synthesis considers:
-
-- Publication trends
-
-- Cancer types
-
-- Datasets
-
-- Sample sizes
-
-- Data modalities
-
-- Machine learning methods
-
-- Deep learning architectures
-
-- Survival outcomes
-
-- Evaluation metrics
-
-- Validation strategies
-
-- External validation
-
-- Explainability
-
-- Methodological limitations
-
-- Research gaps
-
-Quantitative summaries are used where the extracted data support meaningful aggregation. Every proportion is reported with its denominator.
-
-Studies that model survival as fixed-horizon classification are summarised separately from studies that model time-to-event outcomes with censoring.
-
-Performance values are not pooled across studies, and no meta-analysis is planned, because the included studies are expected to differ substantially in cohorts, cancer types, validation protocols, and metric variants. Synthesis follows the Synthesis Without Meta-analysis (SWiM) reporting guideline.
-
-Qualitative synthesis is used to compare methodological approaches, findings, limitations, and research trends.
-
-Risk of bias results are presented descriptively and are used in the sensitivity analyses of the comparative analysis.
-
-## 19. Comparative Analysis of Baseline Models
-
-### 19.1 Rationale
-
-Performance values reported in different studies are not directly comparable, because they depend on the cohort, cancer type, censoring rate, validation protocol, and variant of the evaluation metric. The comparative analysis therefore uses only within-study comparisons, in which these factors are held constant by the original authors. Performance values are not pooled across studies.
-
-### 19.2 Predefined Comparator Models
-
-Predefined comparator models are defined in advance as the following models, grouped into two families.
-
-Statistical, machine learning, and neural survival models:
-
-- Cox proportional hazards
-
-- Penalised Cox regression (LASSO, ridge, elastic net)
-
-- Random Survival Forest
-
-- Gradient-boosted survival models
-
-- Survival Support Vector Machine
-
-- DeepSurv
-
-- Cox-nnet
-
-- DeepHit
-
-Whole-slide image and multimodal survival models:
-
-- ABMIL
-
-- TransMIL
-
-- DeepAttnMISL
-
-- PORPOISE
-
-- MCAT
-
-- MOTCat
-
-- SurvPath
-
-This list is fixed at the protocol date. Any change is recorded as a protocol amendment.
-
-Cox proportional hazards is a statistical model rather than a machine learning method. It is included here as a predefined comparator, consistent with Section 5.
-
-### 19.3 Eligibility for the Comparative Analysis
-
-An included study contributes to the comparative analysis when it satisfies all of the following:
-
-At least two established baselines are evaluated in the same comparison.
-
-The compared models are evaluated on the same cohort and feature set, under the same data split or cross-validation protocol.
-
-The baseline results are produced by the study's authors on that split, rather than copied from a previous publication, unless the study states that the split is identical.
-
-A numeric discrimination value is reported for each compared model.
-
-The discrimination metric is Harrell's C-index, Uno's C-index, time-dependent C-index, or time-dependent AUC, and the variant is recorded.
-
-The performance of each study's own proposed model is extracted for context. It is excluded from the predefined comparator comparisons.
-
-### 19.4 Unit of Analysis
-
-A comparison instance is a set of models evaluated on one cohort and feature set under one protocol within one study. A study may contribute more than one instance. Instances from the same study are not treated as independent.
-
-### 19.5 Synthesis Method
-
-The comparative analysis follows the SWiM reporting guideline and uses vote counting based on direction of effect.
-
-The primary analysis is conducted at the study level. For each pair of baselines, a study is classified as favouring one model when that model achieves the higher discrimination value in the majority of the study's instances in which both models appear. Otherwise the study is recorded as a tie.
-
-Within an instance, identical values at the reported precision are recorded as ties.
-
-Instance-level tallies are reported as a secondary analysis and are explicitly labelled as non-independent.
-
-The magnitude of each difference is reported as the difference in the discrimination metric, summarised by median and range for each pair of baselines.
-
-Formal statistical testing is not planned, because instances are clustered within studies and the number of eligible studies per pair is expected to be small. Where at least ten studies inform a given pair, a sign test on study-level outcomes may be reported as exploratory.
-
-### 19.6 Calibration
-
-Where a study reports a calibration measure, such as the Brier score or integrated Brier score, for two or more established baselines, the same procedure is applied to that measure separately. Pairs for which the discrimination and calibration results favour different models are reported.
-
-### 19.7 Sensitivity Analyses
-
-The primary analysis is repeated under the following restrictions:
-
-- Instances using Harrell's C-index only.
-
-- Excluding values read from figures rather than tables or text.
-
-- Excluding studies that do not describe how the baselines were tuned.
-
-- Excluding studies at high overall risk of bias under PROBAST+AI.
-
-### 19.8 Comparison-Specific Risk of Bias
-
-For each instance, the review records whether the baselines were tuned and how, whether baseline results were produced by the authors or copied from previous work, and where each value appears in the publication. These variables are used to interpret the results and to define the sensitivity analyses.
-
-## 20. Analysis and Visualization
-
-The analysis uses structured data maintained in the repository.
-
-Where applicable, computational scripts are used to generate analytical tables and figures.
-
-Figures and tables remain traceable to their underlying datasets and analysis procedures.
-
-Analysis resources are maintained in the analysis/ directory, while generated figures and tables are maintained in the figures/ and tables/ directories.
-
-## 21. Reporting
-
-The review is reported in accordance with PRISMA 2020, including the PRISMA 2020 for Abstracts checklist.
-
-The literature search is reported in accordance with PRISMA-S.
-
-The synthesis, including the comparative analysis, is reported in accordance with SWiM.
-
-The study-selection process is documented using a PRISMA 2020 flow diagram. The diagram reports records identified from databases and from supplementary methods as separate streams, and reports the reasons for exclusion at full-text screening.
-
-The final manuscript reports the search methodology, study-selection process, characteristics of included studies, evidence synthesis, comparative analysis, limitations, and research gaps.
-
-## 22. Data and Research Materials
-
-Bibliographic records, screening data, extracted study characteristics, analytical resources, figures, tables, and other research materials that can legally and ethically be shared are maintained in this repository.
-
-Copyrighted full-text publications are not redistributed through the repository.
-
-No patient-level personal or sensitive data are included in the repository.
-
-## 23. Version Control
-
-The review materials are maintained using Git and GitHub.
-
-Changes to the protocol, literature database, screening records, extraction data, analysis, figures, tables, and manuscript are tracked through version control.
-
-Major stable versions of the review materials are preserved through GitHub Releases and archived through Zenodo.
-
-## 24. Protocol Registration
-
-The protocol is registered on OSF Registries before the formal database searches are conducted. The registration identifier is added to this document upon registration.
-
-## 25. Protocol Amendments
-
-Any substantive methodological change made after the protocol is registered is documented in the repository.
-
-Protocol amendments include the date, affected methodological component, reason for the change, and description of the modification.
-
-The repository history provides an additional record of changes to the review methodology.
-
-## 26. Review Status
-
-The protocol has been finalised. The pilot search, formal database searches, screening, data extraction, analysis, and synthesis have not yet been conducted. These activities are conducted according to the methodology documented in this protocol.
-
-Development of this protocol was informed by a preliminary, non-systematic reading of the literature by the authors. Studies known from that reading are included only when they are identified through the database searches or the supplementary search methods specified in this protocol.
-
-## 27. Authors
-
-Tawseef Ahmed Teli
-
-ORCID: https\://orcid.org/0000-0001-8784-0923
-
-Aanisa Ali
-
-Hilal Ahmad Khanday
+- **Tawseef Ahmed Teli** — ORCID: [0000-0001-8784-0923](https://orcid.org/0000-0001-8784-0923)
+- **Aanisa Ali**
+- **Hilal Ahmad Khanday**
