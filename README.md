@@ -5,6 +5,8 @@ This repository contains the research materials associated with a literature rev
 
 The repository provides a structured and reproducible record of the literature identification, screening, data extraction, analysis, and manuscript development processes.
 
+Zenodo: https://doi.org/10.5281/zenodo.23470253
+
 ## Research Focus
 
 The review examines the application of artificial intelligence, machine learning, and deep learning techniques for predicting cancer survival and related clinical outcomes.

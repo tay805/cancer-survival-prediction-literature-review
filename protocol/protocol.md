@@ -8,7 +8,7 @@
 | **Protocol date** | 14 October 2026 |
 | **Review type** | Systematic literature review (SLR), including a comparative analysis of baseline survival models |
 | **Publication window** | January 2023–September 2026, inclusive |
-| **Registration** | OSF/Zenodo Registries — identifier to be added after registration |
+| **Registration** | Zenodo: https://doi.org/10.5281/zenodo.23470253 |
 | **Status** | Protocol prepared; search and review stages should be documented as they are completed |
 
 ## 1. Background and rationale
